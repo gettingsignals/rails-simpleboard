@@ -1,0 +1,28 @@
+<%= form_with(model: @message, local: true) do |f| %>
+  <%
+=begin%>
+ <%= render 'shared/error_messages', object: f.object %> 
+<%
+=end%>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control" %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email, class: "form-control" %>
+
+  <%= f.label :subject %>
+  <%= f.text_field :subject, class: "form-control" %>
+
+  <%= f.label :text %>
+  <%= f.text_field :text, class: "form-control" %>
+
+  <%= f.collection_select :category_id, Category.all , :id, :name %>
+  <%
+=begin%>
+ <%= f.text_field :user_id, class: "form-control" %> 
+<%
+=end%>
+  <%= f.collection_select :user_id, User.all , :id, :name %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,28 @@
+<%
+=begin%>
+ <%= provide(:title, @message.subject) %> 
+<%
+=end%>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="message_info">
+      <h1>
+        <%= @message.name %>
+      </h1>
+        <%= button_to 'edit', edit_message_path(@message), method: :get %>
+    </section>
+  </aside>
+  <%
+=begin%>
+ <div class="col-md-8">
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% end %>
+  </div> 
+<%
+=end%>
+</div>

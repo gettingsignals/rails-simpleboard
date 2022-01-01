@@ -1,0 +1,18 @@
+<li>
+  <%= link_to message.subject, message %>
+  <%= message.text %>
+  <%= message.created_at %>
+  <%= message.name %>
+  <%= message.visibility %>
+  <%
+=begin%>
+ <% if current_user.admin? %> 
+<%
+=end%>
+  | <%= button_to message.visibility ? "非表示にする" : "表示する", message, { method: :patch } %>
+  <%
+=begin%>
+ <% end %> 
+<%
+=end%>
+</li>

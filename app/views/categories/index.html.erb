@@ -2,8 +2,11 @@
 <p>Find me in app/views/categories/index.html.erb</p>
 <h1>All categories</h1>
 
-<%= link_to 'edit', edit_category_path(@category), method: :get %>
-<%= link_to 'create', new_category_path %>
+<%
+=begin%>
+ <%= link_to 'create', new_category_path %> 
+<%
+=end%>
 <ul class="categories">
   <%= render @categories %>
 </ul>

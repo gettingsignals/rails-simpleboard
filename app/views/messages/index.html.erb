@@ -1,0 +1,17 @@
+<h1>Messages#index</h1>
+<p>Find me in app/views/messages/index.html.erb</p>
+
+
+<%
+=begin%>
+ <%= link_to 'edit', edit_message_path(@message), method: :get %> 
+<%
+=end%>
+<%
+=begin%>
+ <%= link_to 'create', new_message_path %> 
+<%
+=end%>
+<ul class="messages">
+  <%= render @messages %>
+</ul>
