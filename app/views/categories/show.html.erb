@@ -5,16 +5,20 @@
       <h1>
         <%= @category.name %>
       </h1>
-      <% if logged_in? && current_user.admin? %>
+      <%
+=begin%>
+ <% if logged_in? && current_user.admin? %>
         <%= link_to 'edit', edit_category_path(@category), method: :get %>
-      <% end %>
+      <% end %> 
+<%
+=end%>
     </section>
   </aside>
   <div class="col-md-8">
     <% if @category.messages.any? %>
       <h3>Messages (<%= @category.messages.count %>)</h3>
       <ol class="messages">
-        <%= render :partial => "categories/message", :collection => @category.messages %>
+        <%= render :partial => "layouts/message", :collection => @category.messages %>
       </ol>
     <%
 =begin%>
