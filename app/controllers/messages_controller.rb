@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action :posted_user, only: [:edit, :update]
-  before_action :logged_in_user, only: [:new]
+  before_action :logged_in_user, only: [:new, :create]
 
   def index
     @messages = Message.all
@@ -18,8 +18,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     if @message.save
       flash[:success] = "Created Message!"
-      # redirect_to @message
-      redirect_to messages_url
+      redirect_to @message.category
     else
       render 'new'
     end

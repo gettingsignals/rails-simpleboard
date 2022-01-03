@@ -1,4 +1,5 @@
-<%= provide(:title, @category.name) %> 
+<%= provide(:title, @category.name) %>
+<%= provide(:button_text, "Post") %>
 <div class="row">
   <aside class="col-md-4">
     <section class="category_info">
@@ -26,5 +27,7 @@
 <%
 =end%>
     <% end %>
-  </div> 
+  </div>
+  Post Message:
+  <%= render :partial => "messages/form", locals: {category_id: @category.id, user_id: current_user.id} %>
 </div>

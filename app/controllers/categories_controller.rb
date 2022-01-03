@@ -1,12 +1,13 @@
 class CategoriesController < ApplicationController
   before_action :admin_user, only: [:new, :create, :edit, :update, :destory]
-  
+
   def index
     @categories = Category.all
   end
 
   def show
     @category = Category.find(params[:id])
+    @message = Message.new({category_id: params[:id], user_id: current_user.id})
   end
 
   def new
