@@ -17,20 +17,12 @@
           <ul class="dropdown-menu">
             <li><%= link_to "Profile", user_path(current_user) %></li>
             <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-            <%
-=begin%>
             <li class="divider"></li>
- <li><%= link_to "Log out", logout_path, method: :delete %></li> 
-<%
-=end%>
+            <li><%= link_to "Log out", logout_path, method: :delete %></li> 
           </ul>
         </li>
       <% else %>
-        <%
-=begin%>
- <li><%= link_to "Log in", login_path %></li> 
-<%
-=end%>
+        <li><%= link_to "Log in", login_path %></li> 
       <% end %> 
     </ul>
   </nav>
