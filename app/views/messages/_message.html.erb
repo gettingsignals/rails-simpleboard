@@ -9,7 +9,7 @@
  <% if current_user.admin? %> 
 <%
 =end%>
-  | <%= button_to message.visibility ? "非表示にする" : "表示する", message, { method: :patch } %>
+  | <%= link_to message.visibility ? "非表示にする" : "表示する", message, { method: :patch } %>
   <%
 =begin%>
  <% end %> 

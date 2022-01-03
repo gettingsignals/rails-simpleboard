@@ -1,15 +1,6 @@
 <li>
   <%= link_to category.name, category %>
-  <%
-=begin%>
- <% if current_user.admin? %> 
-<%
-=end%>
-  | <%= button_to "delete", category, method: :delete, data: { confirm: "You sure?" } %>
-
-  <%
-=begin%>
- <% end %> 
-<%
-=end%>
+ <% if logged_in? && current_user.admin? %> 
+  | <%= link_to "delete", category, method: :delete, data: { confirm: "You sure?" } %>
+  <% end %>
 </li>

@@ -1,28 +1,26 @@
-<%
-=begin%>
- <%= provide(:title, @category.name) %> 
-<%
-=end%>
+<%= provide(:title, @category.name) %> 
 <div class="row">
   <aside class="col-md-4">
     <section class="category_info">
       <h1>
         <%= @category.name %>
       </h1>
-        <%= button_to 'edit', edit_category_path(@category), method: :get %>
+      <% if logged_in? && current_user.admin? %>
+        <%= link_to 'edit', edit_category_path(@category), method: :get %>
+      <% end %>
     </section>
   </aside>
-  <%
-=begin%>
- <div class="col-md-8">
-    <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @microposts %>
+  <div class="col-md-8">
+    <% if @category.messages.any? %>
+      <h3>Messages (<%= @category.messages.count %>)</h3>
+      <ol class="messages">
+        <%= render :partial => "categories/message", :collection => @category.messages %>
       </ol>
-      <%= will_paginate @microposts %>
-    <% end %>
-  </div> 
+    <%
+=begin%>
+ <%= will_paginate @messages %> 
 <%
 =end%>
+    <% end %>
+  </div> 
 </div>
