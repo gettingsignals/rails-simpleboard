@@ -1,4 +1,7 @@
 class MessagesController < ApplicationController
+  before_action :posted_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:new]
+
   def index
     @messages = Message.all
   end
@@ -31,8 +34,7 @@ class MessagesController < ApplicationController
     @message.toggle(:visibility)
     if @message.update(visiblity_params)
       flash[:success] = "Message updated"
-      # redirect_to @message
-      redirect_to messages_url
+      redirect_to @message.category
     else
       render 'edit'
     end
@@ -51,5 +53,9 @@ class MessagesController < ApplicationController
 
     def visiblity_params
       params.permit(:visibility)
+    end
+
+    def posted_user
+      redirect_to root_url unless current_user == message.user
     end
 end

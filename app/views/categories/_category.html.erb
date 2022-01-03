@@ -1,6 +1,8 @@
 <li>
   <%= link_to category.name, category %>
- <% if logged_in? && current_user.admin? %> 
+ <% if logged_in? && current_user.admin? %>
+  | Messages: <%= category.messages.count %>
+    <%= link_to 'edit', edit_category_path(category), method: :get %>
   | <%= link_to "delete", category, method: :delete, data: { confirm: "You sure?" } %>
   <% end %>
 </li>

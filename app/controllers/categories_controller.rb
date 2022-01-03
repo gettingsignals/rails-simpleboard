@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :admin_user, only: [:new, :create, :edit, :update, :destory]
+  
   def index
     @categories = Category.all
   end
@@ -30,7 +32,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     if @category.update(category_params)
       flash[:success] = "Category updated"
-      redirect_to @category
+      redirect_to admin_page_home_path
     else
       render 'edit'
     end
@@ -39,7 +41,7 @@ class CategoriesController < ApplicationController
   def destroy
     Category.find(params[:id]).destroy
     flash[:success] = "Category deleted"
-    redirect_to cateogries_url
+    redirect_to admin_page_home_path
   end
 
   private
