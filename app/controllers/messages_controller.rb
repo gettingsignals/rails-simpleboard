@@ -55,6 +55,7 @@ class MessagesController < ApplicationController
     end
 
     def posted_user
+      message = Message.find(params[:id])
       redirect_to root_url unless current_user == message.user
     end
 end

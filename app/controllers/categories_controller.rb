@@ -2,12 +2,13 @@ class CategoriesController < ApplicationController
   before_action :admin_user, only: [:new, :create, :edit, :update, :destory]
 
   def index
-    @categories = Category.all
+    @categories = Category.paginate(page: params[:page],per_page: 1)
   end
 
   def show
     @category = Category.find(params[:id])
     @message = Message.new({category_id: params[:id], user_id: current_user.id})
+    @messages = Message.paginate(page: params[:page])
   end
 
   def new
@@ -18,7 +19,6 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     if @category.save
       flash[:success] = "Created Category!"
-      # redirect_to @category
       redirect_to categories_url
     else
       render 'new'

@@ -19,13 +19,9 @@
     <% if @category.messages.any? %>
       <h3>Messages (<%= @category.messages.count %>)</h3>
       <ol class="messages">
-        <%= render :partial => "layouts/message", :collection => @category.messages %>
+        <%= render :partial => "layouts/message", :collection => @messages %>
       </ol>
-    <%
-=begin%>
- <%= will_paginate @messages %> 
-<%
-=end%>
+      <%= will_paginate @messages %>
     <% end %>
   </div>
   Post Message:

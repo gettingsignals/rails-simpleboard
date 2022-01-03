@@ -13,11 +13,7 @@
     <ol class="messages">
       <%= render :partial => "layouts/message", collection: @messages %>
     </ol>
-    <%
-=begin%>
- <%= will_paginate @microposts %> 
-<%
-=end%>
+    <%= will_paginate @messages %> 
   <% end %> 
   </div>
 </div>
