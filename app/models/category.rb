@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-  has_many :messages, dependent: :destroy
+  has_many :messages, -> { order(created_at: :desc) }, dependent: :destroy
 end
