@@ -1,4 +1,18 @@
-# README
+# SimpleBoard app
+
+## 1.Dockerビルド&起動
+```
+docker-compose build
+docker-compose up
+```
+
+## 2.DB作成
+```
+docker-compose run web /bin/sh
+# rake db:create
+```
+
+
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
