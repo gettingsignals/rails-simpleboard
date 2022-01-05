@@ -10,6 +10,19 @@ docker-compose up
 ```
 docker-compose run web /bin/sh
 # rake db:create
+# rake db:migrate
+# yarn add jquery@3.4.1 bootstrap@3.4.1
+```
+
+## 3.jQuery&bootstrapインストール
+```
+# yarn add jquery@3.4.1 bootstrap@3.4.1
+```
+
+## 4.再度起動
+```
+docker-compose stop
+docker-compose up --build
 ```
 
 
