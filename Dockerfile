@@ -8,6 +8,8 @@ apt-get update && apt-get install -y yarn
  
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash
 RUN apt-get install -y nodejs
+
+RUN yarn add jquery@3.4.1 bootstrap@3.4.1
  
 RUN mkdir /railsapp
 WORKDIR /railsapp
