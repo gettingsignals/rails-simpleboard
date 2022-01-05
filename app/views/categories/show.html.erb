@@ -17,7 +17,16 @@
   </div>
 
   <section>
-  <h3>Post Message:</h3>
-  <%= render :partial => "messages/form", locals: {category_id: @category.id, user_id: current_user.id} %>
+    <h3>Post Message:</h3>
+    <% if logged_in? %>
+      <%= render :partial => "messages/form", locals: {category_id: @category.id, user_id: current_user.id} %>
+    <% else %>
+      <div id="error_explanation">
+        <div class="alert alert-danger">
+          You need to log in to post.
+        <%= link_to "Log in", login_path %>
+        </div>
+      </div>
+    <% end %>
   </section>
 </div>

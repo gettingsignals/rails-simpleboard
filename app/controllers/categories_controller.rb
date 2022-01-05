@@ -7,7 +7,11 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @message = Message.new({category_id: params[:id], user_id: current_user.id})
+    if logged_in?
+      @message = Message.new({category_id: params[:id], user_id: current_user.id})
+    else
+      @message = nil
+    end
     @messages = Message.paginate(page: params[:page])
   end
 
