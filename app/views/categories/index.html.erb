@@ -3,9 +3,9 @@
 <h1>Category List</h1>
 
 <% if logged_in? && current_user.admin? %>
-  <%= link_to 'Create Category', new_category_path %> 
+  <%= link_to 'Create Category', new_category_path, class: "btn btn-primary" %> 
 <% end %>
-<ul class="categories">
+<ul class="list-group">
   <%= render @categories %>
 </ul>
 <%= will_paginate @categories %>

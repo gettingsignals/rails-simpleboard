@@ -1,8 +1,8 @@
-<li>
+<li class="list-group-item d-flex justify-content-between align-items-center">
   <%= link_to category.name, category %>
- <% if logged_in? && current_user.admin? %>
-  | Messages: <%= category.messages.count %>
-    <%= link_to 'edit', edit_category_path(category), method: :get %>
-  | <%= link_to "delete", category, method: :delete, data: { confirm: "You sure?" } %>
+  <% if logged_in? && current_user.admin? %>
+    <span class="badge bg-primary rounded-pill"><%= category.messages.count %></span>
+    <%= link_to 'edit', edit_category_path(category), method: :get, class: 'btn btn-sm btn-default' %>
+    <%= link_to "delete", category, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-sm btn-danger'  %>
   <% end %>
 </li>

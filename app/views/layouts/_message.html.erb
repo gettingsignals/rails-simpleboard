@@ -1,11 +1,15 @@
-<li>
-  <%= message.subject %>
-  <%= message.text %>
-  <%= message.created_at %>
-  <%= message.name %>
-  <%= message.visibility %>
-  <%= message.category.id %>
-  <% if current_user == message.user %>
-  | <%= link_to message.visibility ? "非表示にする" : "表示する", message, method: :patch, data: { confirm: "表示を変更しますか?" } %>
-  <% end %> 
+<li class="list-group-item message<%= ' message-hidden' if !message.visibility %>">
+    <div class="header">
+      <%= message.subject %>
+      <small><%= message.created_at %></small>
+    </div>
+    <p class="mb-1"><%= message.text %></p>
+    <div class="footer">
+      <p>
+        <small><%= message.name %></small>
+        <small><%= message.email %></small>
+      </p>
+    <% if current_user == message.user %>
+    <%= link_to message.visibility ? "非表示" : "表示する", message, method: :patch, class: "btn btn-default" %>
+    <% end %> 
 </li>

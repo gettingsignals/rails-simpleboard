@@ -1,29 +1,23 @@
 <%= provide(:title, @category.name) %>
 <%= provide(:button_text, "Post") %>
 <div class="row">
-  <aside class="col-md-4">
-    <section class="category_info">
-      <h1>
-        <%= @category.name %>
-      </h1>
-      <%
-=begin%>
- <% if logged_in? && current_user.admin? %>
-        <%= link_to 'edit', edit_category_path(@category), method: :get %>
-      <% end %> 
-<%
-=end%>
-    </section>
-  </aside>
-  <div class="col-md-8">
+  <section class="category_info">
+    <h1>
+      <%= @category.name %>
+    </h1>
+  </section>
+  <div>
     <% if @category.messages.any? %>
       <h3>Messages (<%= @category.messages.count %>)</h3>
-      <ol class="messages">
+      <ol class="list-group">
         <%= render :partial => "layouts/message", :collection => @messages %>
       </ol>
       <%= will_paginate @messages %>
     <% end %>
   </div>
-  Post Message:
+
+  <section>
+  <h3>Post Message:</h3>
   <%= render :partial => "messages/form", locals: {category_id: @category.id, user_id: current_user.id} %>
+  </section>
 </div>

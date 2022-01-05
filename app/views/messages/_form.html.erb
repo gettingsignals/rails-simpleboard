@@ -1,14 +1,10 @@
 <%= form_with(model: @message, local: true, url: messages_path) do |f| %>
-  <%
-=begin%>
  <%= render 'shared/error_messages', object: f.object %> 
-<%
-=end%>
   <%= f.label :name %>
   <%= f.text_field :name, class: "form-control" %>
 
   <%= f.label :email %>
-  <%= f.text_field :email, class: "form-control" %>
+  <%= f.email_field :email, class: "form-control" %>
 
   <%= f.label :subject %>
   <%= f.text_field :subject, class: "form-control" %>
@@ -16,14 +12,7 @@
   <%= f.label :text %>
   <%= f.text_field :text, class: "form-control" %>
 
-  <%
-=begin%>
- <%= f.collection_select :category_id, Category.all , :id, :name %>
-  <%= f.collection_select :user_id, User.all , :id, :name %> 
-<%
-=end%>
-
- <%= f.hidden_field :category_id, class: "form-control" %> 
+ <%= f.hidden_field :category_id, class: "form-check-label" %> 
  <%= f.hidden_field :user_id, class: "form-control" %> 
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
