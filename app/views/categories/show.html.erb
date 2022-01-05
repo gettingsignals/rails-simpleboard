@@ -7,7 +7,7 @@
     </h1>
   </section>
   <div>
-    <% if @category.messages.any? %>
+    <% if @messages.any? %>
       <h3>Messages (<%= @messages.count %>)</h3>
       <ol class="list-group">
         <%= render :partial => "layouts/message", :collection => @messages %>

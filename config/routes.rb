@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'admin_page/category'
+  post 'admin_page/category', to: 'admin_page#show_category'
   get 'admin_page/home'
   root 'categories#index'
   get 'sessions/create'

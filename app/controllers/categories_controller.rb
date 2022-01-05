@@ -24,7 +24,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     if @category.save
       flash[:success] = "Created Category!"
-      redirect_to categories_url
+      redirect_to admin_page_category_path
     else
       render 'new'
     end
@@ -38,7 +38,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     if @category.update(category_params)
       flash[:success] = "Category updated"
-      redirect_to admin_page_home_path
+      redirect_to admin_page_category_path
     else
       render 'edit'
     end
@@ -47,7 +47,7 @@ class CategoriesController < ApplicationController
   def destroy
     Category.find(params[:id]).destroy
     flash[:success] = "Category deleted"
-    redirect_to admin_page_home_path
+    redirect_to admin_page_category_path
   end
 
   private

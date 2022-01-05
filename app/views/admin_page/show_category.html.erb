@@ -1,0 +1,23 @@
+<%= provide(:title, @category.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="category_info">
+      <h1 class="name">
+        <%= @category.name %>
+      </h1>
+      <h4 class="count">Messages (<%= @messages.count %>)</h4>
+      <div>
+        <%= link_to 'edit', edit_category_path(@category), method: :get, class: 'btn btn-sm btn-default' %>
+        <%= link_to "delete", @category, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-sm btn-danger'  %>
+      </div>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <% if @messages.any? %>
+      <ol class="list-group">
+        <%= render :partial => "layouts/message", :collection => @messages, :locals => {admin_page: true} %>
+      </ol>
+      <%= will_paginate @messages %>
+    <% end %>
+  </div>
+</div>

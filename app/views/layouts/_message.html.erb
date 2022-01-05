@@ -9,7 +9,7 @@
         <small><%= message.name %></small>
         <small><%= message.email %></small>
       </p>
-    <% if current_user == message.user %>
+    <% if current_user == message.user || admin_page ||= false %>
     <%= link_to message.visibility ? "非表示" : "表示する", message, method: :patch, class: "btn btn-default" %>
     <% end %> 
 </li>
